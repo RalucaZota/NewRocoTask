@@ -1,0 +1,10 @@
+.author-input {
+  display: flex;
+  width: 200px;
+}
+
+.author {
+  width: 265px;
+  border-radius: 5px;
+  display: block;
+}

@@ -4,6 +4,7 @@ import "../Styles/Form.css";
 import Card from "../components/Card";
 import Modal from "../components/Modal";
 import UploadFile from "./Uploadfile";
+import AuthorInput from "./AuthorInput";
 
 export default function Form({ data, lastObject }) {
   const [isOpen, setIsOpen] = useState(false);
@@ -14,6 +15,7 @@ export default function Form({ data, lastObject }) {
     title: "",
     Abstract: "",
   });
+
   function HandleOption(e) {
     const { name, value } = e.target;
     setDetails((prev) => {
@@ -29,7 +31,7 @@ export default function Form({ data, lastObject }) {
     setIsOpen(false);
   }
 
-  const HandleSubmit = () => {
+  const handleSubmit = () => {
     const postData = details;
     console.log(postData);
     axios
@@ -48,15 +50,9 @@ export default function Form({ data, lastObject }) {
 
     const timer = setTimeout(() => {
       console.log("This will run after 2 seconds!");
+      window.location.reload(true);
       setShowCard(true);
     }, 2000);
-
-    window.location.reload(true);
-  };
-
-  const [refresh, setRefresh] = useState(false);
-  const handleRefresh = () => {
-    setRefresh(!refresh);
   };
 
   return (
@@ -66,7 +62,11 @@ export default function Form({ data, lastObject }) {
           <select name="option">
             <option hidden>Choose One..</option>
             {data.map(({ id, value }) => {
-              return <option key={id}>{value}</option>;
+              return (
+                <option key={id} className="options">
+                  {value}
+                </option>
+              );
             })}
           </select>
         </div>
@@ -96,17 +96,22 @@ export default function Form({ data, lastObject }) {
             required
           ></textarea>
         </div>
-        <UploadFile />
+
+        <div>
+          {" "}
+          <AuthorInput />{" "}
+        </div>
+        <div> {/* <UploadFile /> */}</div>
         <button onClick={OpenModal}>Submit</button>
       </form>
       <div className="BUTTON_WRAPPER_STYLES">
-        <Modal handleSubmit={HandleSubmit} open={isOpen} onClose={CloseModal}>
+        <Modal handleSubmit={handleSubmit} open={isOpen} onClose={CloseModal}>
           {Object.values(details).map((obj, index) => {
             return <p key={index}>{obj}</p>;
           })}
         </Modal>
       </div>
-      <div className="card" handleSubmit={HandleSubmit}>
+      <div className="card" handleSubmit={handleSubmit}>
         {!showCard && <Card lastObject={lastObject} />}
       </div>
     </section>

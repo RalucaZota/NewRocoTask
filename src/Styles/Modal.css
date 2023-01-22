@@ -17,6 +17,7 @@
   background-color: #fff;
   padding: 50px;
   z-index: 1000;
+  border-radius: 10px;
 }
 .OVERLAY_STYLES {
   position: fixed;

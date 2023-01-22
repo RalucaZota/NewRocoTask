@@ -1,0 +1,18 @@
+.App {
+  padding-right: 20%;
+}
+.form-upload {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 300px;
+  padding-right: 50%;
+  padding-left: 54.2%;
+}
+.progress {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-left: 30%;
+  padding-top: -20px;
+}

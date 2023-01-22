@@ -1,7 +1,11 @@
+body {
+  background-color: aliceblue;
+}
 .parent {
   display: flex;
   align-items: center;
   justify-content: center;
+  margin-left: 40px;
 }
 select {
   text-align: center;
@@ -10,17 +14,18 @@ select {
   margin-bottom: 20px;
   margin-top: 30px;
   border-color: black;
-  width: 230px;
+  width: 295px;
 }
-option {
-  background-color: aliceblue;
-  border: 1px solid red;
-  border-radius: 20px;
+.options {
+  font-weight: 500;
+  display: block;
+
   text-align: center;
 }
 .title {
   border-radius: 10px;
-  width: 225px;
+  width: 290px;
+  height: 30px;
   border-color: black;
 }
 
@@ -28,5 +33,5 @@ option {
   border-radius: 10px;
   border-color: black;
   margin-top: 10px;
-  width: 225px;
+  width: 290px;
 }

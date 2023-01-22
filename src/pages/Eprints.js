@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Form from "../components/Form";
+import UploadFile from "../components/Uploadfile";
 import options from "../data";
 
 export default function Eprints() {
@@ -30,6 +31,7 @@ export default function Eprints() {
     <>
       <div>
         <Form data={options} lastObject={lastObject} />
+        <UploadFile />
       </div>
     </>
   );

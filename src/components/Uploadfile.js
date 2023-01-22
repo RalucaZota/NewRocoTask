@@ -1,6 +1,7 @@
 import storage from "../components/Firebase";
 import { useState } from "react";
 import { ref, getDownloadURL, uploadBytesResumable } from "@firebase/storage";
+import "../Styles/UploadFile.css";
 
 // import {
 //   getDownloadURL,
@@ -41,12 +42,14 @@ function UploadFile() {
   return (
     <>
       <div className="App">
-        <form onSubmit={formHandler}>
+        <form onSubmit={formHandler} className={"form-upload"}>
           <input type="file" className="input" />
-          <button type="submit">Upload</button>
+          <button type="submit" className="upload">
+            Upload
+          </button>
         </form>
         <hr />
-        <h2>Uploading done {progress}%</h2>
+        <p className="progress">Uploading done {progress}%</p>
       </div>
       <div></div>
     </>

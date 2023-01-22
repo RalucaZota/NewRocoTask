@@ -1,13 +1,18 @@
 .card {
   position: absolute;
-  display: flex;
   align-items: center;
   justify-content: center;
-  bottom: 10%;
-  left: 48%;
+  bottom: 1%;
+  left: 49%;
+  font-weight: 600;
 }
 li {
   list-style: none;
 }
-p {
+ul {
+}
+@media screen and (max-width: 1300px) {
+  .card {
+    margin-bottom: -40px;
+  }
 }
