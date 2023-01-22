@@ -15,9 +15,8 @@ export default function Form({ data }) {
     });
   }
 
-  const HandleSubmit = (e) => {
-    e.preventDefault();
-    const postData = [details];
+  const HandleSubmit = () => {
+    const postData = details;
     console.log(postData);
     axios
       .post(
@@ -30,12 +29,13 @@ export default function Form({ data }) {
       .catch((err) => {
         console.log(err);
       });
+    window.location.reload(true);
   };
 
   return (
     <section className="parent">
       <form onChange={HandleOption}>
-        <div className="">
+        <div>
           <select name="option">
             <option hidden>Choose One..</option>
             {data.map(({ id, value }) => {

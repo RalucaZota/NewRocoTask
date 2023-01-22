@@ -1,33 +1,35 @@
-import axios from "axios";
 import React, { useState, useEffect } from "react";
 import Form from "../components/Form";
 import options from "../data";
 
 export default function Eprints() {
-  const [getInfo, setGetInfo] = useState([]);
+  const [loadedInfo, setloadedInfo] = useState([]);
 
   useEffect(() => {
-    const loadInfo = async () => {
-      //setGetInfo(true);
-      const response = await axios.get(
-        "https://newrocotask-default-rtdb.firebaseio.com/form.json"
-      );
-      setGetInfo(response.data);
-    };
+    fetch("https://newrocotask-default-rtdb.firebaseio.com/form.json")
+      .then((response) => {
+        return response.json();
+      })
+      .then((data) => {
+        const infos = [];
+        for (const key in data) {
+          const newInfos = {
+            id: key,
+            ...data[key],
+          };
 
-    loadInfo();
+          infos.push(newInfos);
+        }
+        setloadedInfo(infos);
+      });
   }, []);
+
+  const lastObject = loadedInfo.slice(-1);
+  console.log(lastObject);
+
   return (
     <div>
       <Form data={options} />
-      {Object.entries(getInfo).map((obj) => {
-        console.log(obj.slice(-1));
-        return (
-          <div>
-            <p>{obj[1].title}</p>
-          </div>
-        );
-      })}
     </div>
   );
 }
