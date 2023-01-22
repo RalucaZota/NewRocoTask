@@ -1,8 +1,11 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import "../Styles/Form.css";
+import Card from "../components/Card";
+import Modal from "../components/Modal";
 
-export default function Form({ data }) {
+export default function Form({ data, lastObject }) {
+  const [isOpen, setIsOpen] = useState(false);
   const [details, setDetails] = useState({
     option: "",
     title: "",
@@ -15,12 +18,21 @@ export default function Form({ data }) {
     });
   }
 
+  function OpenModal(e) {
+    e.preventDefault();
+    setIsOpen(true);
+  }
+  function CloseModal() {
+    setIsOpen(false);
+    window.location.reload(true);
+  }
+
   const HandleSubmit = () => {
     const postData = details;
     console.log(postData);
     axios
       .post(
-        "https://newrocotask-default-rtdb.firebaseio.com/form.json",
+        `https://newrocotask-default-rtdb.firebaseio.com/form.json`,
         postData
       )
       .then((res) => {
@@ -29,6 +41,8 @@ export default function Form({ data }) {
       .catch((err) => {
         console.log(err);
       });
+    console.log(details);
+    setIsOpen(false);
     window.location.reload(true);
   };
 
@@ -69,8 +83,18 @@ export default function Form({ data }) {
             required
           ></textarea>
         </div>
-        <button onClick={HandleSubmit}> Submit</button>
+        <button onClick={OpenModal}>Submit</button>
       </form>
+      <div className="BUTTON_WRAPPER_STYLES">
+        <Modal handleSubmit={HandleSubmit} open={isOpen} onClose={CloseModal}>
+          {Object.values(details).map((obj, index) => {
+            return <p key={index}>{obj}</p>;
+          })}
+        </Modal>
+      </div>
+      <div>
+        <Card lastObject={lastObject} />
+      </div>
     </section>
   );
 }
