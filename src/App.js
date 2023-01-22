@@ -3,9 +3,11 @@ import Eprints from "./pages/Eprints";
 
 function App() {
   return (
-    <div>
-      <Eprints />
-    </div>
+    <>
+      <div>
+        <Eprints />
+      </div>
+    </>
   );
 }
 

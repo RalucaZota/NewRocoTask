@@ -25,11 +25,12 @@ export default function Eprints() {
   }, []);
 
   const lastObject = loadedInfo.slice(-1);
-  console.log(lastObject);
 
   return (
-    <div>
-      <Form data={options} />
-    </div>
+    <>
+      <div>
+        <Form data={options} lastObject={lastObject} />
+      </div>
+    </>
   );
 }

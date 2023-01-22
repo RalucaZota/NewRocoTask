@@ -3,9 +3,12 @@ import axios from "axios";
 import "../Styles/Form.css";
 import Card from "../components/Card";
 import Modal from "../components/Modal";
+import UploadFile from "./Uploadfile";
 
 export default function Form({ data, lastObject }) {
   const [isOpen, setIsOpen] = useState(false);
+  const [showCard, setShowCard] = useState(false);
+
   const [details, setDetails] = useState({
     option: "",
     title: "",
@@ -24,7 +27,6 @@ export default function Form({ data, lastObject }) {
   }
   function CloseModal() {
     setIsOpen(false);
-    window.location.reload(true);
   }
 
   const HandleSubmit = () => {
@@ -43,7 +45,18 @@ export default function Form({ data, lastObject }) {
       });
     console.log(details);
     setIsOpen(false);
+
+    const timer = setTimeout(() => {
+      console.log("This will run after 2 seconds!");
+      setShowCard(true);
+    }, 2000);
+
     window.location.reload(true);
+  };
+
+  const [refresh, setRefresh] = useState(false);
+  const handleRefresh = () => {
+    setRefresh(!refresh);
   };
 
   return (
@@ -83,6 +96,7 @@ export default function Form({ data, lastObject }) {
             required
           ></textarea>
         </div>
+        <UploadFile />
         <button onClick={OpenModal}>Submit</button>
       </form>
       <div className="BUTTON_WRAPPER_STYLES">
@@ -92,8 +106,8 @@ export default function Form({ data, lastObject }) {
           })}
         </Modal>
       </div>
-      <div>
-        <Card lastObject={lastObject} />
+      <div className="card" handleSubmit={HandleSubmit}>
+        {!showCard && <Card lastObject={lastObject} />}
       </div>
     </section>
   );
