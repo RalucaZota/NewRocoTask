@@ -1,0 +1,32 @@
+.parent {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+select {
+  text-align: center;
+  padding: 5px 50px;
+  border-radius: 10px;
+  margin-bottom: 20px;
+  margin-top: 30px;
+  border-color: black;
+  width: 230px;
+}
+option {
+  background-color: aliceblue;
+  border: 1px solid red;
+  border-radius: 20px;
+  text-align: center;
+}
+.title {
+  border-radius: 10px;
+  width: 225px;
+  border-color: black;
+}
+
+.abstract {
+  border-radius: 10px;
+  border-color: black;
+  margin-top: 10px;
+  width: 225px;
+}

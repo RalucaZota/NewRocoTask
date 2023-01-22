@@ -1,8 +1,12 @@
-import logo from "./logo.svg";
 import "./App.css";
+import Eprints from "./pages/Eprints";
 
 function App() {
-  return <div></div>;
+  return (
+    <div>
+      <Eprints />
+    </div>
+  );
 }
 
 export default App;
